@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\AgeService;
+use App\Interfaces\AgeInterface;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (AgeService $ageService) {
-    $ageService->getAge();
+Route::get('/', function (AgeInterface $ageInterface) {
+    $ageInterface->getAge();
 });

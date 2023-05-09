@@ -38,17 +38,17 @@ php artisan key:generate
 
 This implementation demonstrates how to use Laravel's built-in interface binding feature to bind interfaces to their respective implementations. In this example, we have an interface `AgeInterface` and its implementation `AgeService`. We'll bind the `AgeInterface` interface to the `AgeService` implementation in `AppServiceProvider.php`.
 
-To see this implementation in action, we'll create a new route that uses the `AgeService` interface.
+To see this implementation in action, we'll create a new route that uses the `AgeInterface` interface.
 
 1. Open the `routes/web.php` file.
 
-2. Add a new route that uses the `AgeService`.
+2. Add a new route that uses the `AgeInterface`.
 
 ```php
-use App\Services\AgeService;
+use App\Interfaces\AgeInterface;
 
-Route::get('/', function (AgeService $ageService) {
-    $ageService->getAge();
+Route::get('/', function (AgeInterface $ageInterface) {
+    $ageInterface->getAge();
 });
 ```
 
@@ -70,7 +70,7 @@ public function register()
 
 This means that any time we type hint the `AgeInterface` interface in our application, Laravel will automatically resolve it to an instance of the `AgeService` implementation.
 
-In our example, we used the `AgeService` interface in a route closure to get the interface implementation result. Since we bound the interface to the implementation in `AppServiceProvider.php`, Laravel resolved the `AgeInterface` interface to an instance of the `AgeService` implementation, allowing us to use its methods to retrieve the desired output.
+In our example, we used the `AgeInterface` interface in a route closure to retrieve the output of getAge method. Since we bound the interface to the implementation in `AppServiceProvider.php`, Laravel resolved the `AgeInterface` interface to an instance of the `AgeService` implementation, allowing us to use its methods.
 
 ## Conclusion
 
